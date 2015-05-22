@@ -1,7 +1,7 @@
 from __future__ import division
 
 """
-this are some utility function to help do the analysis not only in test.py
+this are some utility function to help do the analysis not only in topword.py
 """
 from math import sqrt
 from operator import itemgetter
