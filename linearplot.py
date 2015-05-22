@@ -1,4 +1,7 @@
+# -*- coding: utf-8 -*-
 from __future__ import division
+from extra import loadstastic, WordInformation
+
 import numpy
 
 
@@ -14,13 +17,15 @@ def get_r(Data, pace=1, start=0):
     SStot = 0
     SSres = 0
     for i in range(Len):
-        SStot += (Data[i] - AveData) ** 2
-        SSres += (Data[i] - (a * (start+i) + b)) ** 2
+        SStot += abs(Data[i] - AveData)
+        SSres += abs(Data[i] - (a * (start+i) + b))
+    try:
+        return 1 - SSres / SStot
+    except ZeroDivisionError:
+        return 1
 
-    return 1 - SSres / SStot
 
-
-def reduceplot(Datas, LeastCoDe, pace=1, start=0, forcedistant=100):
+def reduceplot(Datas, LeastCoDe=0.9, pace=1, start=0, forcedistant=100):
     Result = [(start, Datas[0])]
     PreviousDraw = start
     Len = len(Datas)
@@ -38,5 +43,19 @@ def reduceplot(Datas, LeastCoDe, pace=1, start=0, forcedistant=100):
 
 
 if __name__ == '__main__':
-    y = range(1000000)
-    print len(reduceplot(y, 0.9, forcedistant=50))
+    FileName = 'moby_dick.txt'
+    f = open(FileName, 'r')
+    content = f.read()
+    f.close()
+    Data = loadstastic(content)
+    information = WordInformation(Data, FileName)
+    information.list()
+    templist = content.split(' ')
+    PlotData = []
+    for i in range(information.TotalWordCount-100):
+        temp = templist[i: i+101]
+        PlotData.append(temp.count('a'))
+    print
+    print 'PlotData ready'
+    print
+    print len(reduceplot(PlotData)) / len(PlotData)
