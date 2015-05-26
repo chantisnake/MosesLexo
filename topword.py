@@ -194,7 +194,7 @@ def sort(word_p_lists):
         templist = []
         for word in list:
             if not word[1] == 'Insignificant':
-                temp = ('junk', i+1) + word
+                temp = ('junk', i + 1) + word  # add the 'junk' to make i+1 a tuple type
                 temp = temp[1:]
                 templist.append(temp)
         totallist += templist
@@ -209,13 +209,13 @@ if __name__ == "__main__":
     Wordlists = []
 
     for i in range(1, 12):
-        f = open(str(i)+'.txt', 'r')
+        f = open(str(i) + '.txt', 'r')
         content = f.read()
         f.close()
         Wordlist = loadstastic(content)
         Wordlists.append(Wordlist)
 
-    Result = test(Wordlists, option='MidStdE')
+    Result = test(Wordlists, option='TopStdE')
 
     for wordlist in Result:
         print(wordlist)
