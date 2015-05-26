@@ -26,9 +26,7 @@ def get_r(Data, start=0):
     # construct the line
     Len = len(Data)
     a = (Data[0] - Data[-1]) / (1 - Len)
-    b = Data[0] - a*start
-    if a == 0:  # this would only work in the 'reduceplot' function, and it speed up the program nearly 60 times
-        return 0  # this is the largest possible r
+    b = Data[0] - a * start
 
     # calculate r2
     AveData = sum(Data) / Len
@@ -36,8 +34,12 @@ def get_r(Data, start=0):
     SSres = 0
     for i in range(Len):
         SStot += abs(Data[i] - AveData)
-        SSres += abs(Data[i] - (a * (start+i) + b))
-    return - SSres / SStot
+        SSres += abs(Data[i] - (a * (start + i) + b))
+    try:
+        return - SSres / SStot
+    except ZeroDivisionError:
+        # this means that the dot are all (or nearly all because of rounding on the computer) on a horizontal straight line
+        return 0  # the highest possible r.
 
 
 def reduceplot(Datas, start=0, LeastCoDe=0, forcedistant=300):
@@ -67,10 +69,10 @@ def reduceplot(Datas, start=0, LeastCoDe=0, forcedistant=300):
     Len = len(Datas)
 
     for i in range(1, Len):
-        r2 = get_r(Datas[PreviousDraw: i+2], start=PreviousDraw)
-        if r2 < LeastCoDe or i - PreviousDraw > forcedistant - 1:   # find a point need to plot
-            Result.append((i, Datas[i]))    # plot that
-            PreviousDraw = i    # record that as the last point plotted
+        r2 = get_r(Datas[PreviousDraw: i + 2], start=PreviousDraw)
+        if r2 < LeastCoDe or i - PreviousDraw > forcedistant - 1:  # find a point need to plot
+            Result.append((i, Datas[i]))  # plot that
+            PreviousDraw = i  # record that as the last point plotted
             i += 1  # make sure that we do not check only 2 point in get_r function (:param Data in get_r should be more than 1)
 
     Result.append((Len - 1, Datas[Len - 1]))
@@ -89,8 +91,8 @@ if __name__ == '__main__':
     information.list()
     templist = content.split(' ')
     PlotData = []
-    for i in range(information.TotalWordCount-100):
-        temp = templist[i: i+101]
+    for i in range(information.TotalWordCount - 100):
+        temp = templist[i: i + 101]
         PlotData.append(temp.count('the'))
 
     print
@@ -99,7 +101,7 @@ if __name__ == '__main__':
     start = timeit.default_timer()
     ReducedPlotData = reduceplot(PlotData)
     stop = timeit.default_timer()
-    print 'the time my computer take to reduce:', stop-start, 'seconds'
+    print 'the time my computer take to reduce:', stop - start, 'seconds'
     print 'the number of dot we need to draw now:', len(ReducedPlotData)
     print 'the percent of dot we need to draw now:', len(ReducedPlotData) / len(PlotData)
     print 'preview of the original dot:', PlotData[0: 50]
