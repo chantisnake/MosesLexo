@@ -3,6 +3,7 @@ from __future__ import division
 
 # this program detects word anomaly using z-test for proportion
 # assume the possibility of a particular word appear in a text follows normal distribution
+# this program can be optimized in many way.
 from math import sqrt
 from operator import itemgetter
 from scipy.stats.stats import zprob
@@ -253,8 +254,13 @@ def testgroup(GroupWordLists, option='CustomP', Low=0.0, High=1.0):
                     (this parameter will be overwritten if the option is not 'Custom')
 
     :return:    contain a array
-                each element of array is a array, represent a chunk and it is sorted via p_value
-                each element array is a tuple: (word, corresponding p_value)
+                each element of array is a dictionary map a tuple to a list
+                    tuple consist of 3 element (group number 1, list number, group number 2)
+                        means compare the words in list number of group number 1 to all the word in group number 2
+                    the list contain tuples, sorted by p value:
+                        tuple means (word, p value)
+                        this is word usage of word in group (group number 1), list (list number),
+                        compare to the word usage of the same word in group (group number 2)
     """
 
     # init

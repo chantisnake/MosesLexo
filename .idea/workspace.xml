@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1afb33b5-a3f9-4a78-9991-f83bf82e4c94" name="Default" comment="add features to the topword.py ()">
+    <list default="true" id="1afb33b5-a3f9-4a78-9991-f83bf82e4c94" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/topword.py" afterPath="$PROJECT_DIR$/topword.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -41,8 +41,8 @@
       <file leaf-file-name="topword.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/topword.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9391892">
-              <caret line="394" column="0" selection-start-line="394" selection-start-column="0" selection-end-line="394" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.4560811">
+              <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -520,7 +520,13 @@
       <option name="project" value="LOCAL" />
       <updated>1432739743752</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="add features to the topword.py (group analysis)">
+      <created>1432746741070</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1432746741070</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView">
@@ -579,7 +585,8 @@
     <MESSAGE value="fix bug about get_r" />
     <MESSAGE value="initial commit" />
     <MESSAGE value="add document to extra.py on File_Information and Word_Information" />
-    <option name="LAST_COMMIT_MESSAGE" value="add document to extra.py on File_Information and Word_Information" />
+    <MESSAGE value="add features to the topword.py (group analysis)" />
+    <option name="LAST_COMMIT_MESSAGE" value="add features to the topword.py (group analysis)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -812,8 +819,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/topword.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9391892">
-          <caret line="394" column="0" selection-start-line="394" selection-start-column="0" selection-end-line="394" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.4560811">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
           <folding />
         </state>
       </provider>
