@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1afb33b5-a3f9-4a78-9991-f83bf82e4c94" name="Default" comment="add feature of chunk comparing to topword.py" />
-    <list id="93e160ad-c0dd-43ce-838b-c61f75172e72" name="topword" comment="">
+    <list default="true" id="1afb33b5-a3f9-4a78-9991-f83bf82e4c94" name="Default" comment="add document to extra.py on File_Information and Word_Information">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extra.py" afterPath="$PROJECT_DIR$/extra.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/les_miserables.txt" afterPath="$PROJECT_DIR$/les_miserables.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/linearplot.py" afterPath="$PROJECT_DIR$/linearplot.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moby_dick.txt" afterPath="$PROJECT_DIR$/moby_dick.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -40,34 +41,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="topword.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="topword.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/topword.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.11824324">
-              <caret line="225" column="74" selection-start-line="225" selection-start-column="74" selection-end-line="225" selection-end-column="74" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="336" column="22" selection-start-line="336" selection-start-column="22" selection-end-line="336" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="moby_dick.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/moby_dick.txt">
-          <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.32258">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="extra.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="extra.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/extra.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="197" column="34" selection-start-line="197" selection-start-column="34" selection-end-line="197" selection-end-column="34" />
+            <state vertical-scroll-proportion="-0.49837133">
+              <caret line="112" column="12" selection-start-line="112" selection-start-column="12" selection-end-line="112" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -78,16 +66,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="les_miserables.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/les_miserables.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="29.793104">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -106,9 +84,9 @@
         <option value="$PROJECT_DIR$/../topwords/test.py" />
         <option value="$PROJECT_DIR$/../topwords/extra.py" />
         <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/extra.py" />
         <option value="$PROJECT_DIR$/linearplot.py" />
         <option value="$PROJECT_DIR$/topword.py" />
+        <option value="$PROJECT_DIR$/extra.py" />
       </list>
     </option>
   </component>
@@ -474,7 +452,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="1afb33b5-a3f9-4a78-9991-f83bf82e4c94" name="Default" comment="" />
-      <changelist id="93e160ad-c0dd-43ce-838b-c61f75172e72" name="topword" comment="" />
+      <changelist id="" name="topword" comment="" />
       <created>1432056309174</created>
       <option name="number" value="Default" />
       <updated>1432056309174</updated>
@@ -521,7 +499,13 @@
       <option name="project" value="LOCAL" />
       <updated>1432736177768</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="initial commit">
+      <created>1432736196537</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1432736196537</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView">
@@ -545,8 +529,8 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19850586" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32916668" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35208333" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32916668" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35208333" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32916668" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -578,7 +562,8 @@
     <MESSAGE value="test and add comment on topword.py" />
     <MESSAGE value="add feature of chunk comparing to topword.py" />
     <MESSAGE value="fix bug about get_r" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bug about get_r" />
+    <MESSAGE value="initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -868,14 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/extra.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="197" column="34" selection-start-line="197" selection-start-column="34" selection-end-line="197" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/3.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -902,8 +879,55 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/topword.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11824324">
-          <caret line="225" column="74" selection-start-line="225" selection-start-column="74" selection-end-line="225" selection-end-column="74" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="336" column="22" selection-start-line="336" selection-start-column="22" selection-end-line="336" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://AlchemyModelDependency/#MosesLexo">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>AlchemyModelDependency</ID>
+          <OriginalElement>#MosesLexo</OriginalElement>
+          <nodes />
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="585.5" y="282.5" />
+          <SelectedNodes />
+          <Categories />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://Python/#/home/moses/PycharmProjects/MosesLexo/extra.py">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>Python</ID>
+          <OriginalElement>#/home/moses/PycharmProjects/MosesLexo/extra.py</OriginalElement>
+          <nodes>
+            <node x="" y="">extra.WordInformation</node>
+            <node x="" y="">extra.Files_Information</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="96.0" y="53.5" />
+          <SelectedNodes />
+          <Categories />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm40/system/python_stubs/-1187024009/__builtin__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33277026">
+          <caret line="594" column="4" selection-start-line="594" selection-start-column="4" selection-end-line="594" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/extra.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.49837133">
+          <caret line="112" column="12" selection-start-line="112" selection-start-column="12" selection-end-line="112" selection-end-column="12" />
           <folding />
         </state>
       </provider>

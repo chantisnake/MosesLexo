@@ -7,7 +7,7 @@ this program is the program to reduce the dots needed to draw in the graph in or
 rolling window
 """
 import timeit
-from extra import loadstastic, WordInformation
+from extra import loadstastic, Word_Information
 
 
 def get_r(Data, start=0):
@@ -88,7 +88,7 @@ if __name__ == '__main__':
     f.close()
 
     Data = loadstastic(content)
-    information = WordInformation(Data, FileName)
+    information = Word_Information(Data, FileName)
     information.list()
     templist = content.split(' ')
     PlotData = []
