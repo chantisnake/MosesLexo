@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1afb33b5-a3f9-4a78-9991-f83bf82e4c94" name="Default" comment="add document to extra.py on File_Information and Word_Information">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extra.py" afterPath="$PROJECT_DIR$/extra.py" />
+    <list default="true" id="1afb33b5-a3f9-4a78-9991-f83bf82e4c94" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/les_miserables.txt" afterPath="$PROJECT_DIR$/les_miserables.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/linearplot.py" afterPath="$PROJECT_DIR$/linearplot.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moby_dick.txt" afterPath="$PROJECT_DIR$/moby_dick.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -505,7 +503,13 @@
       <option name="project" value="LOCAL" />
       <updated>1432736196537</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add document to extra.py on File_Information and Word_Information">
+      <created>1432739725741</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1432739725741</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
@@ -563,7 +567,8 @@
     <MESSAGE value="add feature of chunk comparing to topword.py" />
     <MESSAGE value="fix bug about get_r" />
     <MESSAGE value="initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+    <MESSAGE value="add document to extra.py on File_Information and Word_Information" />
+    <option name="LAST_COMMIT_MESSAGE" value="add document to extra.py on File_Information and Word_Information" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
