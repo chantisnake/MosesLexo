@@ -206,7 +206,7 @@ def sort(word_p_lists):
     return totallist
 
 
-def chunkdivision(WordLists, ChunkMap):
+def groupdivision(WordLists, ChunkMap):
     # Chunk test, make sure no two chunk are the same
     for i in range(len(ChunkMap)):
         for j in range(i + 1, len(ChunkMap)):
@@ -217,16 +217,16 @@ def chunkdivision(WordLists, ChunkMap):
     # pack the Chunk data in to ChunkMap(because this is fast)
     for i in range(len(ChunkMap)):
         for j in range(len(ChunkMap[i])):
-            ChunkMap[i][j] = WordLists[j]
+            ChunkMap[i][j] = WordLists[ChunkMap[i][j]]
     return ChunkMap
 
 
-def testchunk(ChunkWordLists, option='CustomP', Low=0.0, High=1.0):
+def testgroup(GroupWordLists, option='CustomP', Low=0.0, High=1.0):
     """
-    this method takes ChunkWordlist and and then analyze each single word(compare to all the other chunk),
+    this method takes ChunkWordlist and and then analyze each single word(compare to all the other group),
     and then pack that into the return
 
-    :param ChunkWordLists:   Array
+    :param GroupWordLists:   Array
                         each element of array represent a chunk, and it is a dictionary type
                         each element in the dictionary maps word inside that chunk to its frequency
 
@@ -258,15 +258,15 @@ def testchunk(ChunkWordLists, option='CustomP', Low=0.0, High=1.0):
     """
 
     # init
-    ChunkLists = []
-    ChunkWordCounts = []
-    ChunkNumWords = []
-    for Chunk in ChunkWordLists:
-        ChunkLists.append(merge_list(Chunk))
-        ChunkWordCounts.append(sum(ChunkLists[-1].values()))
-        ChunkNumWords.append(len(ChunkLists[-1]))
-    TotalList = merge_list(ChunkLists)
-    TotalWordCount = sum(ChunkWordCounts)
+    GroupLists = []
+    GroupWordCounts = []
+    GroupNumWords = []
+    for Chunk in GroupWordLists:
+        GroupLists.append(merge_list(Chunk))
+        GroupWordCounts.append(sum(GroupLists[-1].values()))
+        GroupNumWords.append(len(GroupLists[-1]))
+    TotalList = merge_list(GroupLists)
+    TotalWordCount = sum(GroupWordCounts)
     TotalNumWords = len(TotalList)
     AllResults = {}  # the value to return
 
@@ -332,28 +332,35 @@ def testchunk(ChunkWordLists, option='CustomP', Low=0.0, High=1.0):
         exit(-1)
 
     # calculation
-    for i in range(len(ChunkWordLists)):
-        for j in range(len(ChunkWordLists)):
+    for i in range(len(GroupWordLists)):
+        for j in range(len(GroupWordLists)):
             if i != j:
                 wordlistnumber = 0
-                for wordlist in ChunkWordLists[i]:
+                for wordlist in GroupWordLists[i]:
                     # print 'wordlists', wordlist
                     for word in wordlist.keys():
                         iWordCount = wordlist[word]
                         iTotalWordCount = sum(wordlist.values())
                         iWordProp = iWordCount / iTotalWordCount
                         try:
-                            jWordCount = ChunkLists[j][word]
+                            jWordCount = GroupLists[j][word]
                         except:
                             jWordCount = 0
-                        jTotalWordCount = ChunkWordCounts[j]
+                        jTotalWordCount = GroupWordCounts[j]
                         jWordProp = jWordCount / jTotalWordCount
-                        p_value = ztest(iWordProp, jWordProp, iWordCount, jWordCount)
-                        try:
-                            AllResults[(i, wordlistnumber, j)].append((word, p_value))
-                        except:
-                            AllResults.update({(i, wordlistnumber, j): [(word, p_value)]})
+                        if Low < iWordProp < High:
+                            p_value = ztest(iWordProp, jWordProp, iTotalWordCount, jTotalWordCount)
+                            # print iWordProp, jWordProp, iWordCount, jWordCount
+                            try:
+                                AllResults[(i, wordlistnumber, j)].append((word, p_value))
+                            except:
+                                AllResults.update({(i, wordlistnumber, j): [(word, p_value)]})
                     wordlistnumber += 1
+    # sort the output
+    for tuple in AllResults.keys():
+        list = AllResults[tuple]
+        list = sorted(list, key=lambda tup: tup[1])
+        AllResults.update({tuple: list})
     return AllResults
 
 
@@ -376,6 +383,12 @@ if __name__ == "__main__":
     print sort(Result)
 
     print
-    ChunkWordList = chunkdivision(Wordlists, [[1, 2, 3], [4, 5, 6]])
-    for item in testchunk(ChunkWordList).keys():
-        print item, testchunk(ChunkWordList)[item]
+    ChunkWordList = groupdivision(Wordlists, [[2, 3, 5], [4, 10, 6], [2, 4, 5]])
+    '''
+    for list in ChunkWordList:
+        for dict in list:
+            print 'dict', dict
+            '''
+
+    for item in testgroup(ChunkWordList).keys():
+        print item, testgroup(ChunkWordList)[item]
