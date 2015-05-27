@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
+from __future__ import division
 """
 *PLEASE DO NOT CHANGE THIS PROGRAM OR REUSE THE CODE UNLESS YOU THINK YOU HAVE A GOOD ENOUGH HANDLE OF THE CODE*
 *THE FUNCTION IN THE PROGRAM WORKS AS A WHOLE, CHANGES CAN LEADS TO SERIOUS BUGS*
 this program is the program to reduce the dots needed to draw in the graph in order to let Lexo has a better handle on
 rolling window
 """
-from __future__ import division
 import timeit
 from extra import loadstastic, WordInformation
 
@@ -29,10 +29,10 @@ def get_r(Data, start=0):
     b = Data[0] - a * start
 
     # calculate r2
-    AveData = sum(Data) / Len
+    AveData = sum(Data[1:-1]) / Len - 2
     SStot = 0
     SSres = 0
-    for i in range(Len):
+    for i in range(1, Len - 1):
         SStot += abs(Data[i] - AveData)
         SSres += abs(Data[i] - (a * (start + i) + b))
     try:
@@ -81,7 +81,8 @@ def reduceplot(Datas, start=0, LeastCoDe=0, forcedistant=300):
 
 
 if __name__ == '__main__':
-    FileName = 'les_miserables.txt'
+
+    FileName = 'moby_dick.txt'
     f = open(FileName, 'r')
     content = f.read()
     f.close()
