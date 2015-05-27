@@ -55,9 +55,10 @@ def merge_list(wordlists):
     return mergelist
 
 
-def test(WordLists, option='None', Low=0.0, High=1.0):
+def testall(WordLists, option='CustomP', Low=0.0, High=1.0):
     """
-    this method takes Wordlist and and then analyze each single word, and then pack that into the return
+    this method takes Wordlist and and then analyze each single word(*compare to the total passage(all the chunks)*),
+    and then pack that into the return
 
     :param WordLists:   Array
                         each element of array represent a chunk, and it is a dictionary type
@@ -205,6 +206,157 @@ def sort(word_p_lists):
     return totallist
 
 
+def chunkdivision(WordLists, ChunkMap):
+    # Chunk test, make sure no two chunk are the same
+    for i in range(len(ChunkMap)):
+        for j in range(i + 1, len(ChunkMap)):
+            if ChunkMap[i] == ChunkMap[j]:
+                print 'Chunk ' + str(i) + ' and Chunk ' + str(j) + ' is the same'
+                raise Exception
+
+    # pack the Chunk data in to ChunkMap(because this is fast)
+    for i in range(len(ChunkMap)):
+        for j in range(len(ChunkMap[i])):
+            ChunkMap[i][j] = WordLists[j]
+    return ChunkMap
+
+
+def testchunk(ChunkWordLists, option='CustomP', Low=0.0, High=1.0):
+    """
+    this method takes ChunkWordlist and and then analyze each single word(compare to all the other chunk),
+    and then pack that into the return
+
+    :param ChunkWordLists:   Array
+                        each element of array represent a chunk, and it is a dictionary type
+                        each element in the dictionary maps word inside that chunk to its frequency
+
+    :param option:  some default option to set for High And Low(see the document for High and Low)
+                    1. using standard deviation to find outlier
+                        TopStdE: only analyze the Right outlier of word, determined by standard deviation
+                                    (word frequency > average + 2 * Standard_Deviation)
+                        MidStdE: only analyze the Non-Outlier of word, determined by standard deviation
+                                    (average + 2 * Standard_Deviation > word frequency > average - 2 * Standard_Deviation)
+                        LowStdE: only analyze the Left Outlier of word, determined by standard deviation
+                                    (average - 2 * Standard_Deviation > word frequency)
+
+                    2. using IQR to find outlier *THIS METHOD DO NOT WORK WELL, BECAUSE THE DATA USUALLY ARE HIGHLY SKEWED*
+                        TopIQR: only analyze the Top outlier of word, determined by IQR
+                                    (word frequency > median + 1.5 * Standard)
+                        MidIQR: only analyze the non-outlier of word, determined by IQR
+                                    (median + 1.5 * Standard > word frequency > median - 1.5 * Standard)
+                        LowIQR: only analyze the Left outlier of word, determined by IQR
+                                    (median - 1.5 * Standard > word frequency)
+
+    :param Low:  this method will only analyze the word with higher frequency than this value
+                    (this parameter will be overwritten if the option is not 'Custom')
+    :param High: this method will only analyze the word with lower frequency than this value
+                    (this parameter will be overwritten if the option is not 'Custom')
+
+    :return:    contain a array
+                each element of array is a array, represent a chunk and it is sorted via p_value
+                each element array is a tuple: (word, corresponding p_value)
+    """
+
+    # init
+    ChunkLists = []
+    ChunkWordCounts = []
+    ChunkNumWords = []
+    for Chunk in ChunkWordLists:
+        ChunkLists.append(merge_list(Chunk))
+        ChunkWordCounts.append(sum(ChunkLists[-1].values()))
+        ChunkNumWords.append(len(ChunkLists[-1]))
+    TotalList = merge_list(ChunkLists)
+    TotalWordCount = sum(ChunkWordCounts)
+    TotalNumWords = len(TotalList)
+    AllResults = {}  # the value to return
+
+    # option
+    if option == 'CustomP':
+        pass
+
+    elif option == 'CustomF':
+        Low /= TotalWordCount
+        High /= TotalWordCount
+
+    elif option.endswith('StdE'):
+        StdE = 0
+        Average = TotalWordCount / TotalNumWords
+        for word in TotalList:
+            StdE += (TotalList[word] - Average) ** 2
+        StdE = sqrt(StdE)
+        StdE /= TotalNumWords
+
+        if option.startswith('Top'):
+            # TopStdE: only analyze the Right outlier of word, determined by standard deviation
+            Low = (Average + 2 * StdE) / TotalNumWords
+
+        elif option.startswith('Mid'):
+            # MidStdE: only analyze the Non-Outlier of word, determined by standard deviation
+            High = (Average + 2 * StdE) / TotalNumWords
+            Low = (Average - 2 * StdE) / TotalNumWords
+
+        elif option.startswith('Low'):
+            # LowStdE: only analyze the Left Outlier of word, determined by standard deviation
+            High = (Average - 2 * StdE) / TotalNumWords
+
+        else:
+            print('input error')
+            exit(-1)
+
+    elif option.endswith('IQR'):
+        TempList = sorted(TotalList.items(), key=itemgetter(1))
+        Mid = TempList[int(TotalNumWords / 2)][1]
+        Q3 = TempList[int(TotalNumWords * 3 / 4)][1]
+        Q1 = TempList[int(TotalNumWords / 4)][1]
+        IQR = Q3 - Q1
+
+        if option.startswith('Top'):
+            # TopIQR: only analyze the Top outlier of word, determined by IQR
+            Low = (Mid + 1.5 * IQR) / TotalWordCount
+
+        elif option.startswith('Mid'):
+            # MidIQR: only analyze the non-outlier of word, determined by IQR
+            High = (Mid + 1.5 * IQR) / TotalWordCount
+            Low = (Mid - 1.5 * IQR) / TotalWordCount
+
+        elif option.startswith('Low'):
+            # LowIQR: only analyze the Left outlier of word, determined by IQR
+            High = (Mid - 1.5 * IQR) / TotalWordCount
+
+        else:
+            print('input error')
+            exit(-1)
+
+    else:
+        print('input error')
+        exit(-1)
+
+    # calculation
+    for i in range(len(ChunkWordLists)):
+        for j in range(len(ChunkWordLists)):
+            if i != j:
+                wordlistnumber = 0
+                for wordlist in ChunkWordLists[i]:
+                    # print 'wordlists', wordlist
+                    for word in wordlist.keys():
+                        iWordCount = wordlist[word]
+                        iTotalWordCount = sum(wordlist.values())
+                        iWordProp = iWordCount / iTotalWordCount
+                        try:
+                            jWordCount = ChunkLists[j][word]
+                        except:
+                            jWordCount = 0
+                        jTotalWordCount = ChunkWordCounts[j]
+                        jWordProp = jWordCount / jTotalWordCount
+                        p_value = ztest(iWordProp, jWordProp, iWordCount, jWordCount)
+                        try:
+                            AllResults[(i, wordlistnumber, j)].append((word, p_value))
+                        except:
+                            AllResults.update({(i, wordlistnumber, j): [(word, p_value)]})
+                    wordlistnumber += 1
+    return AllResults
+
+
 if __name__ == "__main__":
     Wordlists = []
 
@@ -215,10 +367,15 @@ if __name__ == "__main__":
         Wordlist = loadstastic(content)
         Wordlists.append(Wordlist)
 
-    Result = test(Wordlists, option='TopStdE')
+    Result = testall(Wordlists, option='TopStdE')
 
     for wordlist in Result:
         print(wordlist)
     print
     print "the list of most significants:"
     print sort(Result)
+
+    print
+    ChunkWordList = chunkdivision(Wordlists, [[1, 2, 3], [4, 5, 6]])
+    for item in testchunk(ChunkWordList).keys():
+        print item, testchunk(ChunkWordList)[item]
