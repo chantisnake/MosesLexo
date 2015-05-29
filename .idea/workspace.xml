@@ -50,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="extra.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="extra.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/extra.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.35303777">
+              <caret line="237" column="0" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -70,10 +70,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="greyword.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="greyword.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/greyword.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2364532">
+            <state vertical-scroll-proportion="0.0">
               <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
@@ -118,7 +118,6 @@
         <option value="$PROJECT_DIR$/../topwords/extra.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/linearplot.py" />
-        <option value="$PROJECT_DIR$/extra.py" />
         <option value="$PROJECT_DIR$/topword.py" />
         <option value="$PROJECT_DIR$/test" />
         <option value="$PROJECT_DIR$/netword" />
@@ -126,6 +125,7 @@
         <option value="$PROJECT_DIR$/network" />
         <option value="$PROJECT_DIR$/network.py" />
         <option value="$PROJECT_DIR$/greyword.py" />
+        <option value="$PROJECT_DIR$/extra.py" />
       </list>
     </option>
   </component>
@@ -641,7 +641,13 @@
       <option name="project" value="LOCAL" />
       <updated>1432908498841</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="geryword.py take files in and then detect the small and large file(s),and normalize the file(s)">
+      <created>1432908563181</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1432908563181</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TodoView">
@@ -655,14 +661,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="39" width="1918" height="1039" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32916668" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18249734" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39978904" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35126582" sideWeight="0.0804904" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32911393" sideWeight="0.4978678" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32911393" sideWeight="0.4978678" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17590618" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -705,7 +711,8 @@
     <MESSAGE value="network.py read from network and convert that into a graph data structure" />
     <MESSAGE value="change the structure to make reading file easier" />
     <MESSAGE value="geryword.py take files in and then detect the small file,and normalize the file(s)" />
-    <option name="LAST_COMMIT_MESSAGE" value="geryword.py take files in and then detect the small file,and normalize the file(s)" />
+    <MESSAGE value="geryword.py take files in and then detect the small and large file(s),and normalize the file(s)" />
+    <option name="LAST_COMMIT_MESSAGE" value="geryword.py take files in and then detect the small and large file(s),and normalize the file(s)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1093,14 +1100,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/extra.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TestSuite/1.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1157,8 +1156,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/greyword.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2364532">
+        <state vertical-scroll-proportion="0.0">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/extra.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35303777">
+          <caret line="237" column="0" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
           <folding />
         </state>
       </provider>
