@@ -45,5 +45,5 @@ if __name__ == '__main__':
     f.close()
     datalist = readdata(content)
     network = makenetwork(datalist)
-    print network['Location']['70']
-    print distance(network, 'Location', '70', '71')
+    print network['shelfmark']['1']
+    print distance(network, 'shelfmark', '70', '71')
