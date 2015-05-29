@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1afb33b5-a3f9-4a78-9991-f83bf82e4c94" name="Default" comment="" />
-    <list id="bd042229-7df3-4894-a560-236b82f2847f" name="New changelist" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/greyword.py" afterPath="$PROJECT_DIR$/greyword.py" />
+    <list default="true" id="1afb33b5-a3f9-4a78-9991-f83bf82e4c94" name="Default" comment="add createdendro method to extra.py, and move merge_list method to extra.py">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="topwords.iws" />
@@ -561,7 +559,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="1afb33b5-a3f9-4a78-9991-f83bf82e4c94" name="Default" comment="" />
-      <changelist id="bd042229-7df3-4894-a560-236b82f2847f" name="New changelist" comment="" />
+      <changelist id="" name="New changelist" comment="" />
       <created>1432056309174</created>
       <option name="number" value="Default" />
       <updated>1432056309174</updated>
@@ -698,7 +696,13 @@
       <option name="project" value="LOCAL" />
       <updated>1432930379710</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="greyword.py functionally finished">
+      <created>1432930420775</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1432930420775</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TodoView">
@@ -765,7 +769,8 @@
     <MESSAGE value="geryword.py take files in and then detect the small file,and normalize the file(s)" />
     <MESSAGE value="add makedendro method to extra.py, and move merge_list method to extra.py" />
     <MESSAGE value="add createdendro method to extra.py, and move merge_list method to extra.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="add createdendro method to extra.py, and move merge_list method to extra.py" />
+    <MESSAGE value="greyword.py functionally finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="greyword.py functionally finished" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
