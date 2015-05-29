@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import division
+from scipy.spatial.distance import pdist
+from scipy.cluster import hierarchy
+from sklearn import metrics
 
 """
 this are some utility function to help do the analysis not only in topword.py
@@ -198,6 +201,23 @@ class Word_Information:
         pass
 
 
+def merge_list(wordlists):
+    """
+    this function merges all the wordlist(dictionary) into one, and return it
+
+    :param wordlists: an array contain all the wordlist(dictionary type)
+    :return: the merged word list (dictionary type)
+    """
+    mergelist = {}
+    for wordlist in wordlists:
+        for key in wordlist.keys():
+            try:
+                mergelist[key] += wordlist[key]
+            except:
+                mergelist.update({key: wordlist[key]})
+    return mergelist
+
+
 def loadstastic(file):
     """
     this method takes an ALREADY SCRUBBED chunk of file(string), and convert that into a WordLists
@@ -236,21 +256,31 @@ def matrixtodict(matrix):
     return ResultArray
 
 
+def creatdendro(WordLists, ChunkSizes):
+    # normalize the data into proportion
+    for i in range(len(WordLists)):
+        for key in WordLists[i].keys():
+            WordLists[i].update({key: WordLists[i][key] / ChunkSizes[i]})
+
+    # convert into matrix
+    Totallist = merge_list(WordLists)
+    Matrix = []
+    wordlistnum = 0
+    for wordlist in WordLists:
+        row = []
+        for key in Totallist.keys():
+            try:
+                row.append(wordlist[key])
+            except KeyError:
+                row.append(0)
+        Matrix.append(row)
+        wordlistnum += 1
+
+    # create dendrogram
+    Y = pdist(Matrix, 'Euclidean')
+    Z = hierarchy.linkage(Y, method='average')
+    return hierarchy.dendrogram(Z)
+
+
 if __name__ == "__main__":
-    WordLists = []
-    FileNames = []
-
-    for i in range(1, 12):
-        f = open(str(i) + '.txt', 'r')
-        content = f.read()
-        FileNames.append(f.name)
-        f.close()
-        Wordlist = loadstastic(content)
-        WordLists.append(Wordlist)
-
-    information = Files_Information(WordLists, FileNames)
-    information.list()
-    information.plot()
-    information = Word_Information(WordLists[0], FileNames[0])
-    information.list()
-    information.plot()
+    print creatdendro([{'la': 2, 'he': 10}, {'he': 3}, {'la': 3, 'he': 2}, {'lalala': 3, 'la': 2, 'he': 10}], [2, 3, 5, 15])

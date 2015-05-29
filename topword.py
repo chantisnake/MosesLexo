@@ -7,7 +7,7 @@ from __future__ import division
 from math import sqrt
 from operator import itemgetter
 from scipy.stats.stats import zprob
-from extra import loadstastic
+from extra import loadstastic, merge_list
 
 
 def ztest(p1, pt, n1, nt):
@@ -38,22 +38,6 @@ def ztest(p1, pt, n1, nt):
     except:
         return 'Insignificant'
 
-
-def merge_list(wordlists):
-    """
-    this function merges all the wordlist(dictionary) into one, and return it
-
-    :param wordlists: an array contain all the wordlist(dictionary type)
-    :return: the merged word list (dictionary type)
-    """
-    mergelist = {}
-    for wordlist in wordlists:
-        for key in wordlist.keys():
-            try:
-                mergelist[key] += wordlist[key]
-            except:
-                mergelist.update({key: wordlist[key]})
-    return mergelist
 
 
 def testall(WordLists, option='CustomP', Low=0.0, High=1.0):
