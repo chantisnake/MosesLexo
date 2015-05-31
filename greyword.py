@@ -59,29 +59,35 @@ def greyword(Contents, inittestrounds=100, significance=0.5):
             FileStore.update({dendro: [tempContents]})
 
     # find the most common dendrogram
-    print sorted(DendroNum.iteritems(), key=operator.itemgetter(1))
-    ResultDendro = max(DendroNum.iteritems(), key=operator.itemgetter(1))[0]
-    DendroContent = FileStore[ResultDendro]
+    ResultDendro = max(DendroNum.iteritems(), key=operator.itemgetter(1)) #[0]
+    DendroContent = FileStore[ResultDendro[0]]
     return ResultDendro, DendroContent
 
 
 if __name__ == "__main__":
-    print 'hello'
-    # read from 'TestSuite' folder
-    path = os.path.join(os.getcwd(), 'TestSuite')
-    data = {}
-    for dir_entry in os.listdir(path):
-        dir_entry_path = os.path.join(path, dir_entry)
-        if os.path.isfile(dir_entry_path):
-            with open(dir_entry_path, 'r') as my_file:
-                data[dir_entry] = my_file.read()
-    Content = data.values()
+    count = 0
+    for _ in range(100):
+        print 'hello'
+        # read from 'TestSuite' folder
+        path = os.path.join(os.getcwd(), 'TestSuite')
+        data = {}
+        for dir_entry in os.listdir(path):
+            dir_entry_path = os.path.join(path, dir_entry)
+            if os.path.isfile(dir_entry_path):
+                with open(dir_entry_path, 'r') as my_file:
+                    data[dir_entry] = my_file.read()
+        Content = data.values()
 
-    print 'content read'
-    DendroContent = greyword(Content, inittestrounds=1000)
-    print 'calculation done'
+        print 'content read'
+        ResultDendro, DendroContent = greyword(Content, inittestrounds=1000)
+        print 'calculation done'
+        if ResultDendro[1] != 1:
+            print 'different'
+            count += 1
+    print(count)
 
 
+    '''
     # write to folders
     contentnum = 0
     for content in DendroContent:
@@ -94,3 +100,4 @@ if __name__ == "__main__":
             file1.write(content[i])
             file1.close()
         contentnum += 1
+        '''
