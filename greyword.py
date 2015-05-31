@@ -3,6 +3,7 @@ from extra import loadstastic, creatdendro
 from numpy.random import choice
 from collections import defaultdict
 import operator
+import os
 
 
 def greyword(Contents, inittestrounds=100, significance=0.5):
@@ -25,6 +26,7 @@ def greyword(Contents, inittestrounds=100, significance=0.5):
     DendroNum = {}
     FileStore = defaultdict()
     for _ in range(inittestrounds):
+        print 'the', _+1, 'times to test'
         # creates a deep copy of the lists
         tempWordLists = WordLists[:]
         tempChunkSizes = ChunkSizes[:]
@@ -57,14 +59,38 @@ def greyword(Contents, inittestrounds=100, significance=0.5):
             FileStore.update({dendro: [tempContents]})
 
     # find the most common dendrogram
-    print DendroNum
+    print sorted(DendroNum.iteritems(), key=operator.itemgetter(1))
     ResultDendro = max(DendroNum.iteritems(), key=operator.itemgetter(1))[0]
     DendroContent = FileStore[ResultDendro]
     return ResultDendro, DendroContent
 
 
 if __name__ == "__main__":
-    Content = ["1 4 5 7 9 7 3", '1', '1', '1 4 5 7 9 7 3']
-    tree, contents = greyword(Content, inittestrounds=100)
-    print tree
-    print contents
+    print 'hello'
+    # read from 'TestSuite' folder
+    path = os.path.join(os.getcwd(), 'TestSuite')
+    data = {}
+    for dir_entry in os.listdir(path):
+        dir_entry_path = os.path.join(path, dir_entry)
+        if os.path.isfile(dir_entry_path):
+            with open(dir_entry_path, 'r') as my_file:
+                data[dir_entry] = my_file.read()
+    Content = data.values()
+
+    print 'content read'
+    DendroContent = greyword(Content, inittestrounds=1000)
+    print 'calculation done'
+
+
+    # write to folders
+    contentnum = 0
+    for content in DendroContent:
+        os.mkdir('example'+str(contentnum))
+        save_path = os.path.join(os.getcwd(), 'example'+str(contentnum))
+        for i in range(len(Content)):
+            name_of_file = data.keys()[i]
+            completeName = os.path.join(save_path, name_of_file)
+            file1 = open(completeName, "w")
+            file1.write(content[i])
+            file1.close()
+        contentnum += 1
