@@ -56,15 +56,6 @@ if __name__ == "__main__":
                 data[dir_entry] = my_file.read()
     Content = data.values()
 
-    print 'content read'
-    newWordLists, bingmeiyouniaoyong = greyword(Content)
-    print
-    for wordlist in newWordLists:
-        for key in wordlist.keys():
-            wordlist[key] = round(wordlist[key])
-    for wordlist in newWordLists:
-        print wordlist
-        print sum(wordlist.values())
 
 
 
