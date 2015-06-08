@@ -321,25 +321,23 @@ def testgroup(GroupWordLists, option='CustomP', Low=0.0, High=1.0):
         exit(-1)
 
     # calculation
-    for i in range(len(GroupWordLists)):
-        for j in range(len(GroupWordLists)):
-            if i != j:
-                wordlistnumber = 0
-                for wordlist in GroupWordLists[i]:
-                    # print 'wordlists', wordlist
+    for i in range(len(GroupWordLists)):  # individual chunk
+        for j in range(len(GroupWordLists)):  # group compare
+            if i != j:  # each chunk in wordlist i, compare to each chunk in
+                wordlistnumber = 0  # the label of the word list in GroupWordList[i]
+                for wordlist in GroupWordLists[i]:  # focusing on a specific word on list i.
                     for word in wordlist.keys():
                         iWordCount = wordlist[word]
                         iTotalWordCount = sum(wordlist.values())
                         iWordProp = iWordCount / iTotalWordCount
                         try:
                             jWordCount = GroupLists[j][word]
-                        except:
+                        except KeyError:
                             jWordCount = 0
                         jTotalWordCount = GroupWordCounts[j]
                         jWordProp = jWordCount / jTotalWordCount
                         if Low < iWordProp < High:
                             p_value = ztest(iWordProp, jWordProp, iTotalWordCount, jTotalWordCount)
-                            # print iWordProp, jWordProp, iWordCount, jWordCount
                             try:
                                 AllResults[(i, wordlistnumber, j)].append((word, p_value))
                             except:
