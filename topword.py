@@ -8,6 +8,8 @@ from math import sqrt
 from operator import itemgetter
 from scipy.stats.stats import zprob
 from extra import loadstastic, merge_list, matrixtodict
+from scipy.stats.mstats import kruskalwallis
+import numpy.ma as ma
 
 
 def ztest(p1, pt, n1, nt):
@@ -195,8 +197,7 @@ def groupdivision(WordLists, ChunkMap):
     for i in range(len(ChunkMap)):
         for j in range(i + 1, len(ChunkMap)):
             if ChunkMap[i] == ChunkMap[j]:
-                print 'Chunk ' + str(i) + ' and Chunk ' + str(j) + ' is the same'
-                raise Exception
+                raise Exception('Chunk ' + str(i) + ' and Chunk ' + str(j) + ' is the same')
 
     # pack the Chunk data in to ChunkMap(because this is fast)
     for i in range(len(ChunkMap)):
@@ -349,6 +350,28 @@ def testgroup(GroupWordLists, option='CustomP', Low=0.0, High=1.0):
         list = sorted(list, key=lambda tup: tup[1])
         AllResults.update({tuple: list})
     return AllResults
+
+def KWtest(Matrixs, Words):
+    Len = max(len(matrix) for matrix in Matrixs)
+    word_pvalue_dict = {}
+
+    for i in range(1, len(Matrixs[0][0])):
+        print Words[i-1]
+        samples = []
+        for k in range(len(Matrixs)):
+            print k
+            sample = []
+            for j in range(len(Matrixs[k])):
+                sample.append(Matrixs[k][j][i])
+            print sample
+            print
+            samples.append(ma.masked_array(sample + [0]*(Len - len(sample)),
+                                           mask=[0]*len(sample)+[1]*(Len-len(sample))))
+        print samples
+        pvalue = kruskalwallis(samples)[1]
+        print pvalue
+        word_pvalue_dict.update({Words[i-1]: pvalue})
+    print word_pvalue_dict
 
 
 if __name__ == "__main__":
