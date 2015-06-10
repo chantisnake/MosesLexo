@@ -352,6 +352,21 @@ def testgroup(GroupWordLists, option='CustomP', Low=0.0, High=1.0):
 
 
 if __name__ == "__main__":
-    pass
+    WordLists = []
+    for i in range(1, 9):
+        content = open('SHAKESPEARE_' + str(i) + '.txt').read()
+        WordLists.append(loadstastic(content))
+    for i in range(1, 7):
+        content = open('WILKINS_' + str(i) + '.txt').read()
+        WordLists.append(loadstastic(content))
 
+    for row in testall(WordLists, option='TopStdE'):
+        print row
 
+    print
+    print sort(testall(WordLists))
+
+    Group = groupdivision(WordLists, [[0, 1, 2, 3, 4, 5, 6, 7], [8, 9, 10, 11, 12, 13]])
+    print
+    for key in testgroup(Group, option='TopStdE').keys():
+        print key, testgroup(Group, option='TopStdE')[key]
