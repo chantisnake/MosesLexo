@@ -2,7 +2,6 @@
 from __future__ import division
 from scipy.spatial.distance import pdist
 from scipy.cluster import hierarchy
-from sklearn import metrics
 
 """
 this are some utility function to help do the analysis not only in topword.py
@@ -256,15 +255,11 @@ def matrixtodict(matrix):
     return ResultArray
 
 
-def creatdendro(WordLists, ChunkSizes):
-    # normalize the data into proportion
-    for i in range(len(WordLists)):
-        for key in WordLists[i].keys():
-            WordLists[i].update({key: WordLists[i][key] / ChunkSizes[i]})
-
+def dicttomatrix(WordLists):
     # convert into matrix
     Totallist = merge_list(WordLists)
     Matrix = []
+    Words = Totallist.keys()
     wordlistnum = 0
     for wordlist in WordLists:
         row = []
@@ -276,11 +271,8 @@ def creatdendro(WordLists, ChunkSizes):
         Matrix.append(row)
         wordlistnum += 1
 
-    # create dendrogram
-    Y = pdist(Matrix, 'Euclidean')
-    Z = hierarchy.linkage(Y, method='average')
-    return hierarchy.dendrogram(Z)
+    return Matrix, Words
 
 
 if __name__ == "__main__":
-    print creatdendro([{'la': 2, 'he': 10}, {'he': 3}, {'la': 3, 'he': 2}, {'lalala': 3, 'la': 2, 'he': 10}], [2, 3, 5, 15])
+    print dicttomatrix([{'la': 2, 'he': 10}, {'he': 3}, {'la': 3, 'he': 2}, {'lalala': 3, 'la': 2, 'he': 10}])
